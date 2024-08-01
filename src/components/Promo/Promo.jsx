@@ -1,11 +1,13 @@
+import s from "./Promo.module.css";
+
 export const Promo = () => {
   return (
-    <section className="promo">
+    <section className={s.promo}>
       <div className="container">
-        <div className="promo__container">
-          <h1 className="promo__title">Попробуй новый вкус Арабики</h1>
+        <div className={s.container}>
+          <h1 className={s.title}>Попробуй новый вкус Арабики</h1>
 
-          <a className="promo__link" href="#">
+          <a className={s.link} href="#">
             Перейти к кофе
           </a>
         </div>

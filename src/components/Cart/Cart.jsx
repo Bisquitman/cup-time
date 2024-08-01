@@ -1,24 +1,26 @@
+import s from "./Cart.module.css";
 import { products } from "../../products";
 import { CartItem } from "../CartItem/CartItem";
+import classNames from "classnames";
 
 export const Cart = () => {
   return (
-    <section className="cart">
-      <div className="container cart__container">
-        <h2 className="cart__title title">Корзина (6)</h2>
+    <section className={s.cart}>
+      <div className={classNames("container", s.container)}>
+        <h2 className={classNames(s.title, "title")}>Корзина (6)</h2>
 
-        <ul className="cart__items items-cart">
+        <ul className={s.items}>
           {products.map((product) => (
             <CartItem key={product.id} data={product} />
           ))}
         </ul>
 
-        <div className="cart__summary">
-          <h3 className="cart__summary-title">Итого:</h3>
+        <div className={s.summary}>
+          <h3 className={s.summaryTitle}>Итого:</h3>
 
-          <p className="cart__total">{(2200).toLocaleString()}&nbsp;₽</p>
+          <p className={s.total}>{(2200).toLocaleString()}&nbsp;₽</p>
 
-          <button className="cart__order-button">Заказать</button>
+          <button className={s.orderButton}>Заказать</button>
         </div>
       </div>
     </section>

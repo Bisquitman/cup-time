@@ -1,0 +1,91 @@
+.promo {
+  background-color: #6cb9ab;
+  color: #fff;
+}
+
+.container {
+  padding-top: 210px;
+  padding-bottom: 80px;
+
+  background-image: url("/img/promo/bg-image.png");
+  background-repeat: no-repeat;
+  background-position: right 113px bottom 0;
+  background-size: clamp(145px, calc(145px + ((315 - 145) * ((100vw - 520px) / (1440 - 520)))), 315px);
+}
+
+.title {
+  font-weight: 400;
+  font-size: clamp(70px, calc(70px + ((88 - 70) * ((100vw - 1024px) / (1440 - 1024)))), 88px);
+  line-height: 1.1;
+  max-width: clamp(620px, calc(620px + ((800 - 620) * ((100vw - 1024px) / (1440 - 1024)))), 800px);
+  margin-bottom: 60px;
+}
+
+.link {
+  display: inline-block;
+  border: 1px solid #fff;
+  border-radius: 4px;
+  padding: 16px 24px;
+  font-size: clamp(16px, calc(16px + ((20 - 16) * ((100vw - 768px) / (1024 - 768)))), 20px);
+  text-align: center;
+  outline: none;
+  transition: color 0.2s, background-color 0.2s;
+}
+.link:hover {
+  border-color: #f0f0f0;
+  color: #f0f0f0;
+}
+.link:active,
+.link:focus,
+.link:focus-visible {
+  border-color: #64099b;
+  color: #64099b;
+}
+.link:disabled,
+.link.disabled,
+.link[disabled] {
+  opacity: 0.5;
+  pointer-events: none;
+  user-select: none;
+}
+
+/*========================================================================================================================================================*/
+
+@media (max-width: 1240px) {
+  .container {
+    padding-top: 172px;
+    padding-bottom: 60px;
+
+    background-position: right 48px bottom 0;
+  }
+  .title {
+    font-size: clamp(54px, calc(54px + ((70 - 54) * ((100vw - 768px) / (1023.98 - 768)))), 70px);
+    max-width: clamp(460px, calc(460px + ((620 - 460) * ((100vw - 768px) / (1023.98 - 768)))), 620px);
+    margin-bottom: 40px;
+  }
+}
+
+@media (max-width: 940px) {
+  .container {
+    padding-top: 157px;
+
+    background-position: right 0 bottom 0;
+  }
+  .title {
+    font-size: clamp(40px, calc(40px + ((54 - 40) * ((100vw - 320px) / (767.98 - 320)))), 54px);
+  }
+  .link {
+    padding: 12px 18px;
+  }
+}
+
+@media (max-width: 660px) {
+  .container {
+    padding-top: 90px;
+    padding-bottom: 250px;
+    background-position: bottom center;
+  }
+  .title {
+    margin-bottom: 24px;
+  }
+}

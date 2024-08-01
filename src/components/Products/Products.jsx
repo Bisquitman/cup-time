@@ -1,13 +1,15 @@
+import s from "./Products.module.css";
 import { products } from "../../products";
 import { Product } from "../Product/Product";
+import classNames from "classnames";
 
 export const Products = () => {
   return (
-    <section className="products">
+    <section className={s.products}>
       <div className="container">
-        <h2 className="products__title title">Чай</h2>
+        <h2 className={classNames(s.title, "title")}>Чай</h2>
 
-        <ul className="products__list">
+        <ul className={s.list}>
           {products.map((item) => (
             <Product key={item.id} data={item} />
           ))}

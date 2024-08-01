@@ -1,0 +1,90 @@
+.header {
+  position: fixed;
+  width: 100%;
+  top: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0 16px;
+}
+
+.header .container {
+  max-width: 1352px;
+  backdrop-filter: blur(60px);
+  background-color: rgba(108, 185, 171, 0.7);
+  border-radius: 6px;
+  padding: 12px 26px;
+  color: #fff;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.logoLink {
+  flex-shrink: 0;
+  font-size: 0;
+  width: clamp(78px, calc(78px + ((99 - 78) * ((100vw - 768px) / (1024 - 768)))), 99px);
+}
+
+.menu {
+  display: flex;
+  align-items: center;
+  gap: clamp(24px, calc(24px + ((50 - 24) * ((100vw - 768px) / (1024 - 768)))), 50px);
+  font-size: clamp(16px, calc(16px + ((20 - 16) * ((100vw - 768px) / (1024 - 768)))), 20px);
+}
+
+.menuLink {
+  transition: color 0.2s;
+}
+
+.menuLink:hover {
+  color: #64099b;
+}
+
+.menuLink.active {
+  color: #64099b;
+}
+
+.cartLink {
+  min-width: 28px;
+  height: 28px;
+  color: #64099b;
+  font-size: 12px;
+  text-align: center;
+  background-image: url("/img/bag.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 10px 4px 3px;
+}
+
+/*========================================================================================================================================================*/
+
+@media (max-width: 1240px) {
+  .header {
+    top: 20px;
+  }
+  .header .container {
+    padding: 12px 22px;
+  }
+}
+
+@media (max-width: 940px) {
+  .header .container {
+    padding: 8px 22px;
+  }
+}
+
+@media (max-width: 660px) {
+  .header {
+    top: 0;
+    padding: 0;
+  }
+  .header .container {
+    padding: 8px 16px;
+  }
+  .menu {
+    display: none;
+    flex-direction: column;
+  }
+}

@@ -1,48 +1,50 @@
+import classNames from "classnames";
+import s from "./Header.module.css";
 import { Link } from "react-router-dom";
 
 export const Header = () => {
   return (
-    <header className="header">
-      <div className="container header__container">
-        <Link to="/" className="header__logo-link">
-          <img className="header__logo" src="/img/logo.svg" alt="Logo cup time" />
+    <header className={s.header}>
+      <div className={classNames(s.container, "container")}>
+        <Link to="/" className={s.logoLink}>
+          <img src="/img/logo.svg" alt="Logo cup time" />
         </Link>
 
-        <nav className="header__nav">
-          <ul className="header__menu">
-            <li className="header__menu-item">
-              <a className="header__menu-link active" href="#">
+        <nav>
+          <ul className={s.menu}>
+            <li>
+              <a className={classNames(s.menuLink, s.active)} href="#">
                 Чай
               </a>
             </li>
 
-            <li className="header__menu-item">
-              <a className="header__menu-link" href="#">
+            <li>
+              <a className={s.menuLink} href="#">
                 Кофе
               </a>
             </li>
 
-            <li className="header__menu-item">
-              <a className="header__menu-link" href="#">
+            <li>
+              <a className={s.menuLink} href="#">
                 Чайники
               </a>
             </li>
 
-            <li className="header__menu-item">
-              <a className="header__menu-link" href="#">
+            <li>
+              <a className={s.menuLink} href="#">
                 Турки
               </a>
             </li>
 
-            <li className="header__menu-item">
-              <a className="header__menu-link" href="#">
+            <li>
+              <a className={s.menuLink} href="#">
                 Прочее
               </a>
             </li>
           </ul>
         </nav>
 
-        <Link className="header__cart-link" to="cart">
+        <Link className={s.cartLink} to="cart">
           4
         </Link>
       </div>

@@ -1,0 +1,15 @@
+.social {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.social__item {
+}
+
+.social__link {
+  transition: color 0.2s;
+}
+.social__link:hover {
+  color: #64099b;
+}
