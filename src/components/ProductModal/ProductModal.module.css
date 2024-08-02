@@ -1,0 +1,5 @@
+.title {
+  font-weight: 400;
+  font-size: clamp(20px, calc(20px + ((24 - 20) * ((100vw - 768px) / (1024 - 768)))), 24px);
+  margin-bottom: 12px;
+}

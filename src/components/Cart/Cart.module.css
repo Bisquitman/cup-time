@@ -15,7 +15,7 @@
 .items {
   --grid-column-gap: 20px;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: var(--grid-column-gap);
 }
 .summary {
@@ -25,6 +25,7 @@
   font-size: clamp(16px, calc(16px + ((20 - 16) * ((100vw - 768px) / (1024 - 768)))), 20px);
 
   display: grid;
+  grid-template-columns: 1fr max-content;
   grid-template-areas:
     "title button"
     "total button";
@@ -41,6 +42,7 @@
 }
 .orderButton {
   grid-area: button;
+  justify-self: end;
 
   outline: none;
   border: 1px solid #64099b;
@@ -69,12 +71,13 @@
   .cart {
     padding-top: 170px;
   }
-  .items {
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  }
 }
 
-@media (max-width: 992px) {
+@media (max-width: 940px) {
+  .cart {
+    padding-top: 140px;
+    padding-bottom: 30px;
+  }
   .cart .container {
     grid-template-columns: 1fr;
   }
@@ -84,16 +87,6 @@
     grid-template-areas: "title total button";
     justify-content: start;
     margin-bottom: 16px;
-  }
-  .orderButton {
-    justify-self: end;
-  }
-}
-
-@media (max-width: 940px) {
-  .cart {
-    padding-top: 140px;
-    padding-bottom: 30px;
   }
   .orderButton {
     padding: 12px 18px;
@@ -107,6 +100,14 @@
 @media (max-width: 660px) {
   .cart {
     padding-top: 100px;
+  }
+  .summary {
+    order: -1;
+    grid-template-columns: 1fr max-content;
+    grid-template-areas:
+      "title button"
+      "total button";
+    margin-bottom: 6px;
   }
   .items {
     grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));

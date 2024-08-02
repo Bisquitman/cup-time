@@ -1,8 +1,16 @@
 import classNames from "classnames";
 import s from "./Header.module.css";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 export const Header = () => {
+  const location = useLocation();
+
+  const getActiveClass = (category) => {
+    const currentCategory = new URLSearchParams(location.search).get("category");
+
+    return currentCategory === category;
+  };
+
   return (
     <header className={s.header}>
       <div className={classNames(s.container, "container")}>
@@ -13,33 +21,35 @@ export const Header = () => {
         <nav>
           <ul className={s.menu}>
             <li>
-              <a className={classNames(s.menuLink, s.active)} href="#">
+              <Link className={classNames(s.menuLink, getActiveClass("tea") ? s.active : "")} to="/products?category=tea">
                 Чай
-              </a>
+              </Link>
             </li>
 
             <li>
-              <a className={s.menuLink} href="#">
+              <Link className={classNames(s.menuLink, getActiveClass("coffee") ? s.active : "")} to="/products?category=coffee">
                 Кофе
-              </a>
+              </Link>
             </li>
 
             <li>
-              <a className={s.menuLink} href="#">
+              <Link
+                className={classNames(s.menuLink, getActiveClass("teapots") ? s.active : "")}
+                to="/products?category=teapots">
                 Чайники
-              </a>
+              </Link>
             </li>
 
             <li>
-              <a className={s.menuLink} href="#">
+              <Link className={classNames(s.menuLink, getActiveClass("cezves") ? s.active : "")} to="/products?category=cezves">
                 Турки
-              </a>
+              </Link>
             </li>
 
             <li>
-              <a className={s.menuLink} href="#">
+              <Link className={classNames(s.menuLink, getActiveClass("other") ? s.active : "")} to="/products?category=other">
                 Прочее
-              </a>
+              </Link>
             </li>
           </ul>
         </nav>

@@ -1,9 +1,19 @@
 import s from "./Products.module.css";
-import { products } from "../../products";
 import { Product } from "../Product/Product";
 import classNames from "classnames";
+import { useEffect } from "react";
+import { useProducts } from "../../context/ProductContext";
+import { useSearchParams } from "react-router-dom";
 
 export const Products = () => {
+  const [searchParams] = useSearchParams();
+  const { products, setCategory } = useProducts();
+  const defaultCategory = searchParams.get("category");
+
+  useEffect(() => {
+    setCategory(defaultCategory);
+  }, [defaultCategory, setCategory]);
+
   return (
     <section className={s.products}>
       <div className="container">

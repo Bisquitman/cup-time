@@ -24,13 +24,13 @@
   gap: clamp(24px, calc(24px + ((50 - 24) * ((100vw - 768px) / (1024 - 768)))), 50px);
 }
 
-.menu-link {
+.menuLink {
   transition: color 0.2s;
 }
-.menu-link:hover {
+.menuLink:hover {
   color: #64099b;
 }
-.menu-link.active {
+.menuLink.active {
   color: #64099b;
 }
 

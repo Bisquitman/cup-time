@@ -1,9 +1,17 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Social } from "../Social/Social";
 import s from "./Footer.module.css";
 import classNames from "classnames";
 
 export const Footer = () => {
+  const location = useLocation();
+
+  const getActiveClass = (category) => {
+    const currentCategory = new URLSearchParams(location.search).get("category");
+
+    return currentCategory === category;
+  };
+
   return (
     <footer className={s.footer}>
       <div className={classNames("container", s.container)}>
@@ -14,33 +22,35 @@ export const Footer = () => {
         <div>
           <ul className={s.menu}>
             <li>
-              <a className={classNames(s.menuLink, s.active)} href="#">
+              <Link className={classNames(s.menuLink, getActiveClass("tea") ? s.active : "")} to="/products?category=tea">
                 Чай
-              </a>
+              </Link>
             </li>
 
             <li>
-              <a className={s.menuLink} href="#">
+              <Link className={classNames(s.menuLink, getActiveClass("coffee") ? s.active : "")} to="/products?category=coffee">
                 Кофе
-              </a>
+              </Link>
             </li>
 
             <li>
-              <a className={s.menuLink} href="#">
+              <Link
+                className={classNames(s.menuLink, getActiveClass("teapots") ? s.active : "")}
+                to="/products?category=teapots">
                 Чайники
-              </a>
+              </Link>
             </li>
 
             <li>
-              <a className={s.menuLink} href="#">
+              <Link className={classNames(s.menuLink, getActiveClass("cezves") ? s.active : "")} to="/products?category=cezves">
                 Турки
-              </a>
+              </Link>
             </li>
 
             <li>
-              <a className={s.menuLink} href="#">
+              <Link className={classNames(s.menuLink, getActiveClass("other") ? s.active : "")} to="/products?category=other">
                 Прочее
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
@@ -48,9 +58,7 @@ export const Footer = () => {
         <div className={s.info}>
           <p className={s.copyright}>© CupTime, 2024</p>
 
-          <p hidden>
-            Проект сделан в учебных целях
-          </p>
+          <p hidden>Проект сделан в учебных целях</p>
 
           <ul>
             <li className={s.developer}>
