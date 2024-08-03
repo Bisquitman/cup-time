@@ -34,7 +34,7 @@ export const ProductModal = ({ isOpen, onRequestClose, data }) => {
   const handleIncrease = () => {
     setQuantity(quantity + 1);
   };
-  
+
   const handleAddToCart = () => {
     addToCart(data, quantity);
     onRequestClose();
@@ -43,7 +43,9 @@ export const ProductModal = ({ isOpen, onRequestClose, data }) => {
   return (
     <Modal isOpen={isOpen} onRequestClose={onRequestClose} style={customStyles} contentLabel="Product Modal">
       <div className={s.wrapper}>
-        <img className={s.image} src={`${API_URL}${data.img}`} alt={data.title} />
+        <div className={s.image}>
+          <img src={`${API_URL}${data.img}`} alt={data.title} />
+        </div>
         <div className={s.body}>
           <div className={s.header}>
             <h2 className={s.title}>{data.title}</h2>
@@ -68,11 +70,15 @@ export const ProductModal = ({ isOpen, onRequestClose, data }) => {
                 +
               </button>
             </div>
-            <button className={s.addBtn} onClick={handleAddToCart}>Добавить</button>
+            <button className={s.addBtn} onClick={handleAddToCart}>
+              Добавить
+            </button>
           </div>
-
-          <button className={s.close} onClick={onRequestClose}>&times;</button>
         </div>
+
+        <button className={s.close} onClick={onRequestClose}>
+          &times;
+        </button>
       </div>
     </Modal>
   );
