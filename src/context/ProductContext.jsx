@@ -7,6 +7,16 @@ export const ProductProvider = ({ children }) => {
   const [products, setProducts] = useState([]);
   const [category, setCategory] = useState("");
 
+  const categoriesRus = {
+    tea: "Чай",
+    coffee: "Кофе",
+    teapots: "Чайники",
+    cezves: "Турки",
+    other: "Прочее",
+  };
+
+  const title = categoriesRus[category];
+
   useEffect(() => {
     if (category) {
       fetch(`${API_URL}/api/products/${category}`)
@@ -21,11 +31,7 @@ export const ProductProvider = ({ children }) => {
     }
   }, [category]);
 
-  return (
-    <ProductContext.Provider value={{ products, setCategory }}>
-      {children}
-    </ProductContext.Provider>
-  );
+  return <ProductContext.Provider value={{ products, setCategory, title }}>{children}</ProductContext.Provider>;
 };
 
 // eslint-disable-next-line react-refresh/only-export-components

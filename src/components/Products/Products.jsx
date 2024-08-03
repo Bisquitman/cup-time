@@ -7,7 +7,7 @@ import { useSearchParams } from "react-router-dom";
 
 export const Products = () => {
   const [searchParams] = useSearchParams();
-  const { products, setCategory } = useProducts();
+  const { products, setCategory, title } = useProducts();
   const defaultCategory = searchParams.get("category");
 
   useEffect(() => {
@@ -17,7 +17,7 @@ export const Products = () => {
   return (
     <section className={s.products}>
       <div className="container">
-        <h2 className={classNames(s.title, "title")}>Чай</h2>
+        <h2 className={classNames(s.title, "title")}>{title}</h2>
 
         <ul className={s.list}>
           {products.map((item) => (

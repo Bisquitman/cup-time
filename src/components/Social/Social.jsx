@@ -25,7 +25,7 @@ export const Social = () => {
         </a>
       </li>
 
-      <li className={s.item}>
+      <li>
         <a className={s.link} href="#">
           <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path

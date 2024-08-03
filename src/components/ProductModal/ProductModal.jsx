@@ -4,6 +4,8 @@ import s from "./ProductModal.module.css";
 
 const customStyles = {
   content: {
+    padding: "0",
+    borderRadius: "6px",
     top: "50%",
     left: "50%",
     right: "auto",
@@ -20,19 +22,21 @@ export const ProductModal = ({ isOpen, onRequestClose, data }) => {
 
   return (
     <Modal isOpen={isOpen} onRequestClose={onRequestClose} style={customStyles} contentLabel="Product Modal">
-      <h2 className={s.title}>{data.title}</h2>
       <img src={`${API_URL}${data.img}`} alt={data.title} />
-      <p>{data.price.toLocaleString()}&nbsp;₽</p>
+      <div className="body">
+        <h2 className={s.title}>{data.title}</h2>
+        <p>{data.price.toLocaleString()}&nbsp;₽</p>
 
-      <ul>
-        {Object.entries(data.additional).map(([key, value]) => (
-          <li key={key}>
-            <strong>{key}</strong>: {value}
-          </li>
-        ))}
-      </ul>
+        <ul>
+          {Object.entries(data.additional).map(([key, value]) => (
+            <li key={key}>
+              <strong>{key}</strong>: {value}
+            </li>
+          ))}
+        </ul>
 
-      <button onClick={onRequestClose}>Закрыть</button>
+        <button onClick={onRequestClose}>Закрыть</button>
+      </div>
     </Modal>
   );
 };

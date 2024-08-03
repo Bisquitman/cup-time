@@ -49,10 +49,10 @@
   margin-bottom: 3px;
 }
 
-.developer-link {
+.developerLink {
   transition: color 0.2s;
 }
-.developer-link:hover {
+.developerLink:hover {
   color: #64099b;
 }
 
