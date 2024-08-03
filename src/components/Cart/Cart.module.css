@@ -15,7 +15,7 @@
 .items {
   --grid-column-gap: 20px;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
   gap: var(--grid-column-gap);
 }
 .summary {
@@ -92,7 +92,7 @@
     padding: 12px 18px;
   }
   .items {
-    grid-template-columns: repeat(auto-fit, minmax(159px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(159px, 1fr));
     --grid-column-gap: 16px;
   }
 }
@@ -110,7 +110,7 @@
     margin-bottom: 6px;
   }
   .items {
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
     --grid-column-gap: 8px;
   }
 }

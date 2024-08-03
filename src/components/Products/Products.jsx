@@ -4,6 +4,7 @@ import classNames from "classnames";
 import { useEffect } from "react";
 import { useProducts } from "../../context/ProductContext";
 import { useSearchParams } from "react-router-dom";
+import { SkeletonLoader } from "../SkeletonLoader/SkeletonLoader";
 
 export const Products = () => {
   const [searchParams] = useSearchParams();
@@ -20,9 +21,7 @@ export const Products = () => {
         <h2 className={classNames(s.title, "title")}>{title}</h2>
 
         <ul className={s.list}>
-          {products.map((item) => (
-            <Product key={item.id} data={item} />
-          ))}
+          {products.length ? products.map((item) => <Product key={item.id} data={item} />) : <SkeletonLoader />}
         </ul>
       </div>
     </section>

@@ -1,6 +1,7 @@
 import classNames from "classnames";
 import s from "./Header.module.css";
 import { Link, useLocation } from "react-router-dom";
+import { useCart } from "../../context/CartContext";
 
 export const Header = () => {
   const location = useLocation();
@@ -10,6 +11,14 @@ export const Header = () => {
 
     return currentCategory === category;
   };
+
+  const { cart } = useCart();
+
+  const totalItems = cart
+    ? cart.reduce((acc, item) => {
+        return item.quantity + acc;
+      }, 0)
+    : 0;
 
   return (
     <header className={s.header}>
@@ -55,7 +64,7 @@ export const Header = () => {
         </nav>
 
         <Link className={s.cartLink} to="cart">
-          4
+          {totalItems}
         </Link>
       </div>
     </header>

@@ -1,19 +1,11 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { API_URL } from "../const";
+import { API_URL, categoriesRus } from "../const";
 
 const ProductContext = createContext();
 
 export const ProductProvider = ({ children }) => {
   const [products, setProducts] = useState([]);
   const [category, setCategory] = useState("");
-
-  const categoriesRus = {
-    tea: "Чай",
-    coffee: "Кофе",
-    teapots: "Чайники",
-    cezves: "Турки",
-    other: "Прочее",
-  };
 
   const title = categoriesRus[category];
 

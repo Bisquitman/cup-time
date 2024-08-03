@@ -1,6 +1,8 @@
 import Modal from "react-modal";
 import { API_URL } from "../../const";
 import s from "./ProductModal.module.css";
+import { useState } from "react";
+import { useCart } from "../../context/CartContext";
 
 const customStyles = {
   content: {
@@ -18,24 +20,59 @@ const customStyles = {
 Modal.setAppElement("#root");
 
 export const ProductModal = ({ isOpen, onRequestClose, data }) => {
+  const [quantity, setQuantity] = useState(1);
+  const { addToCart } = useCart();
+
   if (!data) return null;
+
+  const handleDecrease = () => {
+    if (quantity > 1) {
+      setQuantity(quantity - 1);
+    }
+  };
+
+  const handleIncrease = () => {
+    setQuantity(quantity + 1);
+  };
+  
+  const handleAddToCart = () => {
+    addToCart(data, quantity);
+    onRequestClose();
+  };
 
   return (
     <Modal isOpen={isOpen} onRequestClose={onRequestClose} style={customStyles} contentLabel="Product Modal">
-      <img src={`${API_URL}${data.img}`} alt={data.title} />
-      <div className="body">
-        <h2 className={s.title}>{data.title}</h2>
-        <p>{data.price.toLocaleString()}&nbsp;₽</p>
+      <div className={s.wrapper}>
+        <img className={s.image} src={`${API_URL}${data.img}`} alt={data.title} />
+        <div className={s.body}>
+          <div className={s.header}>
+            <h2 className={s.title}>{data.title}</h2>
+            <p className={s.price}>{data.price.toLocaleString()}&nbsp;₽</p>
+          </div>
 
-        <ul>
-          {Object.entries(data.additional).map(([key, value]) => (
-            <li key={key}>
-              <strong>{key}</strong>: {value}
-            </li>
-          ))}
-        </ul>
+          <ul className={s.additional}>
+            {Object.entries(data.additional).map(([key, value]) => (
+              <li className={s.item} key={key}>
+                <span>{key}</span> <span>{value}</span>
+              </li>
+            ))}
+          </ul>
 
-        <button onClick={onRequestClose}>Закрыть</button>
+          <div className={s.footer}>
+            <div className={s.quantity}>
+              <button className={s.quantityButton} onClick={handleDecrease}>
+                -
+              </button>
+              <input className={s.quantityInput} type="number" value={quantity} readOnly />
+              <button className={s.quantityButton} onClick={handleIncrease}>
+                +
+              </button>
+            </div>
+            <button className={s.addBtn} onClick={handleAddToCart}>Добавить</button>
+          </div>
+
+          <button className={s.close} onClick={onRequestClose}>&times;</button>
+        </div>
       </div>
     </Modal>
   );
