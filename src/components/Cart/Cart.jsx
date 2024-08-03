@@ -24,7 +24,7 @@ export const Cart = () => {
         <h2 className={classNames(s.title, "title")}>Корзина ({totalItems})</h2>
 
         <ul className={s.items}>
-          {cart?.length ? cart.map((item) => <CartItem key={item.id} data={item} />) : <SkeletonLoader />}
+          {cart ? cart.map((item) => <CartItem key={item.id} data={item} />) : <SkeletonLoader />}
         </ul>
 
         <div className={s.summary}>
