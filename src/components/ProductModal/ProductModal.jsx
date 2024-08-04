@@ -1,7 +1,7 @@
 import Modal from "react-modal";
 import { API_URL } from "../../const";
 import s from "./ProductModal.module.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useCart } from "../../context/CartContext";
 
 const customStyles = {
@@ -24,6 +24,10 @@ export const ProductModal = ({ isOpen, onRequestClose, data }) => {
   const { addToCart } = useCart();
 
   if (!data) return null;
+
+  useEffect(() => {
+    document.documentElement.style.overflow = isOpen ? "hidden" : "";
+  }, [isOpen]);
 
   const handleDecrease = () => {
     if (quantity > 1) {

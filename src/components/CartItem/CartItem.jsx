@@ -15,7 +15,7 @@ export const CartItem = ({ data }) => {
       setItemQuantity(newQuantity);
       updateQuantity(data.id, newQuantity);
     } else {
-      // updateQuantity(data.id, 0);
+      // updateQuantity(data.id, 0); // или
       removeFromCart(data.id);
     }
   };

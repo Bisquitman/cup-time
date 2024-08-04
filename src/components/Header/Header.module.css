@@ -27,6 +27,9 @@
   width: clamp(78px, calc(78px + ((99 - 78) * ((100vw - 768px) / (1024 - 768)))), 99px);
 }
 
+.headerNav {
+}
+
 .menu {
   display: flex;
   align-items: center;
@@ -46,6 +49,12 @@
   color: #64099b;
 }
 
+.control {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
 .cartLink {
   min-width: 28px;
   height: 28px;
@@ -56,6 +65,14 @@
   background-position: center;
   background-repeat: no-repeat;
   padding: 10px 4px 3px;
+}
+
+.headerBurger {
+  display: none;
+}
+
+.closeBtn {
+  display: none;
 }
 
 /*========================================================================================================================================================*/
@@ -83,8 +100,42 @@
   .header .container {
     padding: 8px 16px;
   }
-  .menu {
+  .headerNav {
     display: none;
+  }
+  .headerNav.active {
+    display: flex; /* Показать навигацию при активации бургера */
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    /* overflow: hidden; */
+    inset: 0;
+    height: 100vh;
+    background-color: #6cb9ab;
+  }
+
+  .menu {
+    display: flex;
     flex-direction: column;
+    font-size: 24px;
+  }
+  .closeBtn {
+    position: absolute;
+    top: 20px;
+    right: 16px;
+    width: 28px;
+    height: 28px;
+    display: block; /* Показать кнопку-бургер на мобильных устройствах */
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+  }
+  .headerBurger {
+    display: block; /* Показать кнопку-бургер на мобильных устройствах */
+    width: 28px;
+    height: 28px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
   }
 }

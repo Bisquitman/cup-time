@@ -4,8 +4,17 @@
   gap: 12px;
 }
 .link {
+  display: block;
+  font-size: 0;
+  outline: none;
   transition: color 0.2s;
 }
 .link:hover {
   color: #64099b;
+}
+.link:focus-visible {
+  color: #64099b;
+  outline: 1px solid #64099b;
+  outline-offset: 3px;
+  border-radius: 6px;
 }

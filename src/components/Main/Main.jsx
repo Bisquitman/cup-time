@@ -3,8 +3,11 @@ import { Products } from "../Products/Products.jsx";
 import { Promo } from "../Promo/Promo.jsx";
 import { Cart } from "../Cart/Cart.jsx";
 import { Order } from "../Order/Order.jsx";
+import { useCart } from "../../context/CartContext";
 
 export const Main = () => {
+  const { cart } = useCart();
+
   return (
     <main className="main">
       <Routes>
@@ -25,7 +28,7 @@ export const Main = () => {
           element={
             <>
               <Cart />
-              <Order />
+              {cart?.length ? <Order /> : null}
             </>
           }
         />

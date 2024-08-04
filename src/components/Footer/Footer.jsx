@@ -1,15 +1,14 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Social } from "../Social/Social";
 import s from "./Footer.module.css";
 import classNames from "classnames";
+import { useProducts } from "../../context/ProductContext";
+import { getActiveClass } from "../../helpers";
 
 export const Footer = () => {
-  const location = useLocation();
-
-  const getActiveClass = (category) => {
-    const currentCategory = new URLSearchParams(location.search).get("category");
-
-    return currentCategory === category;
+  const { categoriesRus, productsRef } = useProducts();
+  const scrollToProducts = () => {
+    productsRef.current.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
@@ -21,37 +20,16 @@ export const Footer = () => {
 
         <div>
           <ul className={s.menu}>
-            <li>
-              <Link className={classNames(s.menuLink, getActiveClass("tea") ? s.active : "")} to="/products?category=tea">
-                Чай
-              </Link>
-            </li>
-
-            <li>
-              <Link className={classNames(s.menuLink, getActiveClass("coffee") ? s.active : "")} to="/products?category=coffee">
-                Кофе
-              </Link>
-            </li>
-
-            <li>
-              <Link
-                className={classNames(s.menuLink, getActiveClass("teapots") ? s.active : "")}
-                to="/products?category=teapots">
-                Чайники
-              </Link>
-            </li>
-
-            <li>
-              <Link className={classNames(s.menuLink, getActiveClass("cezves") ? s.active : "")} to="/products?category=cezves">
-                Турки
-              </Link>
-            </li>
-
-            <li>
-              <Link className={classNames(s.menuLink, getActiveClass("other") ? s.active : "")} to="/products?category=other">
-                Прочее
-              </Link>
-            </li>
+            {Object.entries(categoriesRus).map(([key, value]) => (
+              <li key={key}>
+                <Link
+                  className={classNames(s.menuLink, getActiveClass(key) ? s.active : "")}
+                  to={`/products?category=${key}`}
+                  onClick={scrollToProducts}>
+                  {value}
+                </Link>
+              </li>
+            ))}
           </ul>
         </div>
 
@@ -63,7 +41,7 @@ export const Footer = () => {
           <ul>
             <li className={s.developer}>
               Designer:{" "}
-              <a className={s.developerLink} href="#" target="_blank" rel="noreferrer noopener">
+              <a className={s.developerLink} href="https://t.me/Mrshmallowww" target="_blank" rel="noreferrer noopener">
                 Anastasia Ilina
               </a>
             </li>

@@ -6,7 +6,7 @@
 .container {
   padding-top: 210px;
   padding-bottom: 80px;
-
+  min-height: 602px;
   background-image: url("/img/promo/bg-image.png");
   background-repeat: no-repeat;
   background-position: right 113px bottom 0;
@@ -83,6 +83,7 @@
   .container {
     padding-top: 90px;
     padding-bottom: 250px;
+    min-height: 420px;
     background-position: bottom center;
   }
   .title {

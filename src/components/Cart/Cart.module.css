@@ -65,6 +65,42 @@
   user-select: none;
 }
 
+.modalCartOverlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.modalCart {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  border-radius: 12px;
+  width: 80%;
+  max-width: 600px;
+  padding: 40px 20px 20px;
+}
+.modalCartTitle {
+  font-size: clamp(32px, calc(32px + ((36 - 32) * ((100vw - 768px) / (1024 - 768)))), 36px);
+}
+.modalCartCloseBtn {
+  position: absolute;
+  /* top: 16px;
+  right: 16px; */
+  top: 6px;
+  right: 6px;
+  font-size: 40px;
+  line-height: 1;
+  width: 40px;
+  height: 40px;
+  display: block;
+  color: #b8b8b8;
+  transition: color 0.2s;
+}
+.modalCartCloseBtn:hover {
+  color: #1d1d1d;
+}
 /*========================================================================================================================================================*/
 
 @media (max-width: 1240px) {

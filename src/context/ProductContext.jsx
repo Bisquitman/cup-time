@@ -1,13 +1,20 @@
-import { createContext, useContext, useEffect, useState } from "react";
-import { API_URL, categoriesRus } from "../const";
+import { createContext, useContext, useEffect, useRef, useState } from "react";
+import { API_URL } from "../const";
 
 const ProductContext = createContext();
 
 export const ProductProvider = ({ children }) => {
   const [products, setProducts] = useState([]);
   const [category, setCategory] = useState("");
+  const productsRef = useRef(null);
 
-  const title = categoriesRus[category];
+  const categoriesRus = {
+    tea: "Чай",
+    coffee: "Кофе",
+    teapots: "Чайники",
+    cezves: "Турки",
+    other: "Прочее",
+  };
 
   useEffect(() => {
     if (category) {
@@ -23,7 +30,7 @@ export const ProductProvider = ({ children }) => {
     }
   }, [category]);
 
-  return <ProductContext.Provider value={{ products, setCategory, title }}>{children}</ProductContext.Provider>;
+  return <ProductContext.Provider value={{ products, setCategory, categoriesRus, productsRef }}>{children}</ProductContext.Provider>;
 };
 
 // eslint-disable-next-line react-refresh/only-export-components

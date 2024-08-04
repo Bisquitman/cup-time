@@ -2,8 +2,6 @@
   height: 100%;
   font-size: 0;
   background-color: #f2f9f7;
-  min-height: 600px;
-  min-height: clamp(360px, calc(360px + ((600 - 360) * ((100vw - 768px) / (1440 - 768)))), 600px);
 
   border-radius: 6px;
   overflow: hidden;

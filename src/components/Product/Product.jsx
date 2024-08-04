@@ -4,7 +4,6 @@ import s from "./Product.module.css";
 import { ProductModal } from "../ProductModal/ProductModal";
 
 export const Product = ({ data }) => {
-  // console.log('data: ', data);
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
   const openModal = (event) => {
@@ -22,7 +21,7 @@ export const Product = ({ data }) => {
         title={data.title}
         onClick={openModal}
         aria-label={`Открыть модальное окно для ${data.title}`}>
-        <article className="product">
+        <article className={s.product}>
           <img className={s.image} src={`${API_URL}${data.img}`} alt={data.title} />
           <div className={s.content}>
             <h3 className={s.title}>{data.title}</h3>

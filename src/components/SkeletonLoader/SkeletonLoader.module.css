@@ -1,19 +1,19 @@
 .skeletonWrapper {
   width: 100%;
-  height: 444px;
+  /* height: 444px; */
   background-color: #f2f9f7;
   overflow: hidden;
   border-radius: 6px;
 }
 
-@media (max-width: 1240px) {
+/* @media (max-width: 1240px) {
   .skeletonWrapper {
     height: 477px;
   }
-}
+} */
 
-@media (max-width: 940px) {
+/* @media (max-width: 940px) {
   .skeletonWrapper {
     height: 380px;
   }
-}
+} */
