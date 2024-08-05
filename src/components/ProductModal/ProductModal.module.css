@@ -1,6 +1,18 @@
-.wrapper {
+.overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  overflow-y: auto;
+}
+.modal {
   position: relative;
   max-width: clamp(524px, calc(524px + ((744 - 524) * ((100vw - 768px) / (1024 - 768)))), 744px);
+  width: 100%;
+  margin: auto;
+  border-radius: 6px;
+  overflow: hidden;
+  background-color: #f2f9f7;
   display: grid;
   grid-template-columns: 1fr 1.2fr;
 }
@@ -14,11 +26,15 @@
   height: 100%;
 }
 .body {
+  position: relative;
   padding: 40px 24px 24px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   gap: 15px;
+}
+.header {
+  max-width: 320px;
 }
 .title {
   font-weight: 400;
@@ -56,14 +72,14 @@
   font-size: clamp(16px, calc(16px + ((20 - 16) * ((100vw - 768px) / (1024 - 768)))), 20px);
 }
 .quantityButton {
-  width: 36px;
-  height: 36px;
+  width: clamp(24px, calc(24px + ((36 - 24) * ((100vw - 768px) / (1024 - 768)))), 36px);
+  height: clamp(24px, calc(24px + ((36 - 24) * ((100vw - 768px) / (1024 - 768)))), 36px);
   border-radius: 4px;
   border: 1px solid #b8b8b8;
 }
 
 .quantityInput {
-  width: 26px;
+  width: clamp(24px, calc(24px + ((34 - 24) * ((100vw - 768px) / (1024 - 768)))), 34px);
   text-align: center;
   background-color: transparent;
   border: none;
@@ -77,8 +93,8 @@
   border-radius: 4px;
   padding: 14px 24px;
   color: #64099b;
-  transition: border-color 0.2s;
   font-size: clamp(16px, calc(16px + ((20 - 16) * ((100vw - 768px) / (1024 - 768)))), 20px);
+  transition: color 0.2s, border-color 0.2s;
 }
 .addBtn:hover {
   border-color: #7308b5;
@@ -93,19 +109,17 @@
   pointer-events: none;
   user-select: none;
 }
-.close {
-  position: fixed;
-  top: 24px;
-  right: 24px;
+.closeBtn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
   color: #b8b8b8;
   font-size: 20px;
-  line-height: 1;
-  width: 20px;
-  height: 20px;
+  line-height: 0;
   display: block;
   transition: color 0.2s;
 }
-.close:hover {
+.closeBtn:hover {
   color: #1d1c1d;
 }
 /*========================================================================================================================================================*/
@@ -115,11 +129,8 @@
     padding: 24px 24px 16px;
   }
   .quantityInput {
-    max-width: 24px;
   }
   .quantityButton {
-    width: 24px;
-    height: 24px;
   }
   .addBtn {
     padding: 12px 18px;
@@ -127,7 +138,7 @@
 }
 
 @media (max-width: 660px) {
-  .wrapper {
+  .modal {
     grid-template-columns: 1fr;
     grid-template-rows: 1fr 0.8fr;
     max-width: 290px;
@@ -146,7 +157,7 @@
   .quantityInput {
     max-width: 24px;
   }
-  .close {
+  .closeBtn {
     top: 16px;
     right: 16px;
   }

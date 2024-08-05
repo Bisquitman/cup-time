@@ -1,7 +1,6 @@
 import classNames from "classnames";
 import s from "./Order.module.css";
 import { useOrder } from "../../context/OrderContext";
-// import { OrderForm } from "../OrderForm/OrderForm";
 
 export const Order = () => {
   const {orderDetails, updateOrderDetails} = useOrder();
@@ -16,7 +15,6 @@ export const Order = () => {
       <div className={classNames("container", s.container)}>
         <h2 className={classNames(s.title, "title")}>Доставка</h2>
 
-        {/* <OrderForm /> */}
         <form className={s.orderForm}>
           <input
             className={s.input}
